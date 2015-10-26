@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ImageLoader.h"
 
 @interface ViewController ()
 
@@ -33,12 +34,17 @@
 # pragma mark - IBActions
 
 - (IBAction)loadImage:(id)sender {
-    NSURL *imageUrl = [NSURL URLWithString:@"http://hellogiggles.hellogiggles.netdna-cdn.com/wp-content/uploads/2014/04/14/2013-Kate-Upton-HD-Wallpapers-e1360405079523-500x375c.jpeg"];
-    //NSURL *imageUrl = [NSURL URLWithString:@"http://go.nasa.gov/1NvITOM"];
+    NSString *boobs = @"http://hellogiggles.hellogiggles.netdna-cdn.com/wp-content/uploads/2014/04/14/2013-Kate-Upton-HD-Wallpapers-e1360405079523-500x375c.jpeg";
+    NSString *nasa = @"http://go.nasa.gov/1NvITOM";
+    
     [self.loadingImage setHidden:NO];
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSLog(@"Loading in background!");
-        NSData *imageSource = [NSData dataWithContentsOfURL:imageUrl];
+
+        ImageLoader *loader = [ImageLoader sharedInstance];
+        NSData *imageSource = [loader loadImageDataFromUrl:boobs];
+        
         // every interface operations must be runned in main queue!!!
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.loadingImage setHidden:YES];
