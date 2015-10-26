@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, weak) IBOutlet UIImageView *myImage;
+
 @end
 
 @implementation ViewController
@@ -22,6 +24,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - IBActions
+
+- (IBAction)loadImage:(id)sender {
+    NSLog(@"Loading...");
 }
 
 @end

@@ -29,6 +29,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYT-94-x28">
                                         <rect key="frame" x="0.0" y="0.0" width="107" height="30"/>
                                         <state key="normal" title="Carregar Image"/>
+                                        <connections>
+                                            <action selector="loadImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3T5-ME-kpX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -42,6 +45,9 @@
                             <constraint firstItem="VIM-BP-AS9" firstAttribute="top" secondItem="4Ct-u9-Msf" secondAttribute="bottom" constant="50" id="vR8-vH-POH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myImage" destination="4Ct-u9-Msf" id="DDj-th-Ju4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
