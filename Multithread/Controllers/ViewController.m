@@ -29,11 +29,18 @@
 # pragma mark - IBActions
 
 - (IBAction)loadImage:(id)sender {
-    NSLog(@"Loading...");
-    NSURL *boobUrl = [NSURL URLWithString:@"http://hellogiggles.hellogiggles.netdna-cdn.com/wp-content/uploads/2014/04/14/2013-Kate-Upton-HD-Wallpapers-e1360405079523-500x375c.jpeg"];
-    NSURL *nasaUrl = [NSURL URLWithString:@"http://go.nasa.gov/1NvITOM"];
-    NSData *imageSource = [NSData dataWithContentsOfURL:nasaUrl];
-    self.myImage.image = [UIImage imageWithData:imageSource];
+    NSURL *imageUrl = [NSURL URLWithString:@"http://hellogiggles.hellogiggles.netdna-cdn.com/wp-content/uploads/2014/04/14/2013-Kate-Upton-HD-Wallpapers-e1360405079523-500x375c.jpeg"];
+    //NSURL *imageUrl = [NSURL URLWithString:@"http://go.nasa.gov/1NvITOM"];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSLog(@"Loading in background!");
+        NSData *imageSource = [NSData dataWithContentsOfURL:imageUrl];
+        // every interface operations must be runned in main queue!!!
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.myImage.image = [UIImage imageWithData:imageSource];
+        });
+        NSLog(@"TUFF!");
+    });
 }
 
 @end
