@@ -453,7 +453,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/Multithread/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = squiter.Multithread;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -464,7 +463,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/Multithread/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = squiter.Multithread;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -536,6 +534,7 @@
 				817CCCB91BDE5DCC00E16D9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		817CCCBA1BDE5DCC00E16D9A /* Build configuration list for PBXNativeTarget "MultithreadTests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +543,7 @@
 				817CCCBC1BDE5DCC00E16D9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		817CCCBD1BDE5DCC00E16D9A /* Build configuration list for PBXNativeTarget "MultithreadUITests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +552,7 @@
 				817CCCBF1BDE5DCC00E16D9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
