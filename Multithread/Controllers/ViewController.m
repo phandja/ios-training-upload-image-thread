@@ -35,7 +35,7 @@
 
 - (IBAction)loadImage:(id)sender {
     NSString *boobs = @"http://hellogiggles.hellogiggles.netdna-cdn.com/wp-content/uploads/2014/04/14/2013-Kate-Upton-HD-Wallpapers-e1360405079523-500x375c.jpeg";
-    NSString *nasa = @"http://go.nasa.gov/1NvITOM";
+    //NSString *nasa = @"http://go.nasa.gov/1NvITOM";
     
     [[ImageLoader sharedInstance] loadImageDataFromUrl:boobs start:^{
         self.myImage.contentMode = UIViewContentModeScaleAspectFit;
