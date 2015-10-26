@@ -20,8 +20,8 @@
 }
 
 - (void)loadImageDataFromUrl:(NSString *)string
-                       start:(void (^)(void))startBlock
-                  completion:(void (^)(NSData *imageData))completion {
+                       start:(ImageLoaderStart)startBlock
+                  completion:(ImageLoaderCompletion)completion {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         startBlock();
