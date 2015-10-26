@@ -11,7 +11,7 @@
 @implementation ImageLoader
 
 + (id)sharedInstance {
-    static ImageLoader *instance = nil;
+    static id instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
@@ -19,10 +19,21 @@
     return instance;
 }
 
-- (id)loadImageDataFromUrl:(NSString *)url {
-    NSURL *imageUrl = [NSURL URLWithString:url];
-    NSData *imageSource = [NSData dataWithContentsOfURL:imageUrl];
-    return imageSource;
+- (void)loadImageDataFromUrl:(NSString *)string
+                       start:(void (^)(void))startBlock
+                  completion:(void (^)(NSData *imageData))completion {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        startBlock();
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:string]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(data);
+        });
+    });
 }
 
 @end

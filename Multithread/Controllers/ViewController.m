@@ -37,21 +37,14 @@
     NSString *boobs = @"http://hellogiggles.hellogiggles.netdna-cdn.com/wp-content/uploads/2014/04/14/2013-Kate-Upton-HD-Wallpapers-e1360405079523-500x375c.jpeg";
     NSString *nasa = @"http://go.nasa.gov/1NvITOM";
     
-    [self.loadingImage setHidden:NO];
+    [[ImageLoader sharedInstance] loadImageDataFromUrl:boobs start:^{
+        self.myImage.contentMode = UIViewContentModeScaleAspectFit;
+        [self.loadingImage setHidden:NO];
+    }completion:^(NSData *imageData)    {
+        [self.loadingImage setHidden:YES];
+        self.myImage.image = [UIImage imageWithData:imageData];
+    }];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSLog(@"Loading in background!");
-
-        ImageLoader *loader = [ImageLoader sharedInstance];
-        NSData *imageSource = [loader loadImageDataFromUrl:boobs];
-        
-        // every interface operations must be runned in main queue!!!
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.loadingImage setHidden:YES];
-            self.myImage.image = [UIImage imageWithData:imageSource];
-        });
-        NSLog(@"TUFF!");
-    });
 }
 
 @end

@@ -10,7 +10,9 @@
 
 @interface ImageLoader : NSObject
 
-+ (id)sharedInstance;
-- (id)loadImageDataFromUrl:(NSString *)url;
++ (instancetype)sharedInstance;
+- (void)loadImageDataFromUrl:(NSString *)string
+                       start:(void (^)(void))startBlock
+                  completion:(void (^)(NSData *imageData))completion;
 
 @end
